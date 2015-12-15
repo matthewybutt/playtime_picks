@@ -10,6 +10,7 @@ var activitySchema = new mongoose.Schema({
   image_url: String,
   activity_date: Date,
   favorite: Boolean,
+  fav_counter: Number,
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
