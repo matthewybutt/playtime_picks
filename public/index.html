@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Playtime Picks</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="/assets/css/main.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -14,10 +15,14 @@
 
   <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' ">
     <h4> {{activity.title}} </h4>
+    <span ng-click="vm.addFavCount(activity)">
+      <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
+    </span>
+    <p> Favorite: {{activity.favorite}} </p>
+    <p> Fav'ed: {{activity.fav_counter}} </p>
     <p> {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
     <p> Stay at Home: {{activity.at_home}}  |  Let's Be Active: {{activity.be_active}}  |  Under 2 y.o.: {{activity.under_two}} </p>
     <p> {{activity.summary}} </p>
-    <p> Fav'ed: {{activity.fav_counter}} </p>
   </div>
 
   <form class="activity-form" ng-submit="vm.addActivity()">

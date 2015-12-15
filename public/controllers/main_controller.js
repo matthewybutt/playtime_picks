@@ -50,6 +50,7 @@
       ];
 
       vm.addActivity = addActivity;
+      vm.addFavCount = addFavCount;
 
       function addActivity(){
         vm.activities.push(
@@ -72,6 +73,16 @@
         vm.under_two = "true";
         vm.summary = "";
         vm.image_url = "";
+      };
+
+      function addFavCount(activity){
+        $log.log("click");
+        activity.favorite = !activity.favorite;
+        if (activity.favorite === true){
+          (activity.fav_counter +=1)
+        } else {
+          (activity.fav_counter -=1)
+        };
       };
 
     };
