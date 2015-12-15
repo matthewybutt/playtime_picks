@@ -19,7 +19,7 @@
           summary: "The first activity",
           image_url: "",
           activity_date: new Date(2015, 11, 4),
-          favorite: true,
+          favorite: false,
           fav_counter: 3,
           comments: ""
         },
@@ -43,7 +43,7 @@
           summary: "The third activity",
           image_url: "",
           activity_date: new Date(2015, 8, 2),
-          favorite: true,
+          favorite: false,
           fav_counter: 5,
           comments: ""
         }
@@ -76,7 +76,7 @@
       };
 
       function addFavCount(activity){
-        $log.log("click");
+        // $log.log("click");
         activity.favorite = !activity.favorite;
         if (activity.favorite === true){
           (activity.fav_counter +=1)
