@@ -15,9 +15,9 @@
         templateUrl: "/templates/home.html",
       })
       .state("activities", {
-        url: "/activities",
+        url: "/activities/{id}",
         templateUrl: "/templates/activities.html",
-        controller: "MainController"
+        controller: "ActivitiesController"
       })
       .state("about", {
         url: "/about",

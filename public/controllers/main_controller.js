@@ -65,7 +65,10 @@
             activity_date: new Date(),
             favorite: false,
             fav_counter: 0,
-            comments: ""
+            comments: [
+            {author: "Lauren", body: "I like this activity!"},
+            {author: "Viv", body: "This activity can get a little boring."}
+            ]
           }
         );
         vm.title = "";
