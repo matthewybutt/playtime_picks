@@ -2,6 +2,6 @@
   "use strict";
 
   angular
-    .module('playtimePicks', []);
+    .module('playtimePicks', ['ui.router']);
 
 })();

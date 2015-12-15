@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="playtimePicks">
-<head>
-  <meta charset="UTF-8">
-  <title>Playtime Picks</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="/assets/css/main.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-</head>
-<body ng-controller="MainController as vm">
-
-  <h1>Playtime Picks</h1>
-
-
-  <button ui-sref-active="active" ui-sref="home"> Home </button>
-  <button ui-sref-active="active" ui-sref="activities"> Activities </button>
-  <button ui-sref-active="active" ui-sref="about"> About </button>
-
-  <ui-view></ui-view>
-
-  <!-- <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' ">
+  <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' ">
     <h4> {{activity.title}} </h4>
     <span ng-click="vm.addFavCount(activity)">
       <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
@@ -45,12 +22,4 @@
     <p> Summary: <input type="text" ng-model="vm.summary"> </p>
     <p> Image Link: <input type="text" ng-model="vm.image_url"> </p>
     <button ng-click="submit">Submit</button>
-  </form> -->
-
-<!-- Angular Scripts -->
-  <script src="/app.js"></script>
-  <script src="/app.routes.js"></script>
-  <script src="/services/activity.dataservice.js"></script>
-  <script src="/controllers/main_controller.js"></script>
-</body>
-</html>
+  </form>

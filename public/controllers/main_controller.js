@@ -5,49 +5,50 @@
       .module("playtimePicks")
       .controller("MainController", MainController);
 
-    MainController.$inject = ["$log"];
+    MainController.$inject = ["$log", "activityDataService"];
 
-    function MainController($log) {
+    function MainController($log, activityDataService) {
       var vm = this;
+      vm.activities = activityDataService;
 
-      vm.activities = [
-        {
-          title: "Activity 1",
-          at_home: true,
-          be_active: true,
-          under_two: true,
-          summary: "The first activity",
-          image_url: "",
-          activity_date: new Date(2015, 11, 4),
-          favorite: false,
-          fav_counter: 3,
-          comments: ""
-        },
-        {
-          title: "Activity 2",
-          at_home: true,
-          be_active: false,
-          under_two: false,
-          summary: "The second activity",
-          image_url: "",
-          activity_date: new Date(2015, 7, 7),
-          favorite: false,
-          fav_counter: 10,
-          comments: ""
-        },
-        {
-          title: "Activity 3",
-          at_home: false,
-          be_active: false,
-          under_two: false,
-          summary: "The third activity",
-          image_url: "",
-          activity_date: new Date(2015, 8, 2),
-          favorite: false,
-          fav_counter: 5,
-          comments: ""
-        }
-      ];
+      // vm.activities = [
+      //   {
+      //     title: "Activity 1",
+      //     at_home: true,
+      //     be_active: true,
+      //     under_two: true,
+      //     summary: "The first activity",
+      //     image_url: "",
+      //     activity_date: new Date(2015, 11, 4),
+      //     favorite: false,
+      //     fav_counter: 3,
+      //     comments: ""
+      //   },
+      //   {
+      //     title: "Activity 2",
+      //     at_home: true,
+      //     be_active: false,
+      //     under_two: false,
+      //     summary: "The second activity",
+      //     image_url: "",
+      //     activity_date: new Date(2015, 7, 7),
+      //     favorite: false,
+      //     fav_counter: 10,
+      //     comments: ""
+      //   },
+      //   {
+      //     title: "Activity 3",
+      //     at_home: false,
+      //     be_active: false,
+      //     under_two: false,
+      //     summary: "The third activity",
+      //     image_url: "",
+      //     activity_date: new Date(2015, 8, 2),
+      //     favorite: false,
+      //     fav_counter: 5,
+      //     comments: ""
+      //   }
+      // ];
 
       vm.addActivity = addActivity;
       vm.addFavCount = addFavCount;
