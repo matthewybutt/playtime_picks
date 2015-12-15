@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <title>Playtime Picks</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/main.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
 <body ng-controller="MainController as vm">
 
-  {{vm.text}}
+  <h1>Playtime Picks</h1>
 
+  <div class="activity" ng-repeat="activity in vm.activities | orderBy: '-activity_date' ">
+    <h4> {{activity.title}} </h4>
+    <p> {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
+    <p> {{activity.summary}} </p>
+  </div>
 
 <!-- Angular Scripts -->
   <script src="/app.js"></script>
