@@ -14,6 +14,8 @@ if (!env.MONGOLAB_URI) {
   });
 }
 
-mongoose.connect(dbUri);
+mongoose.connect(dbUri, function(){
+  console.log("Connected to db: " + dbUri);
+});
 
 module.exports = mongoose;

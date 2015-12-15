@@ -15,7 +15,22 @@ var show = function(req, res, next){
   });
 };
 
+var create = function(req, res, next){
+  var activity = new Activity();
+
+  activity.title = req.body.title;
+
+  activity.save(function(err, savedActivity){
+    if (err){
+      res.send(err)
+    }
+    console.log("Activity saved")
+    res.json(savedActivity);
+  });
+};
+
 module.exports = {
   index: index,
-  show:  show
+  show:  show,
+  create: create
 };

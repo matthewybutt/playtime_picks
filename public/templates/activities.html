@@ -17,8 +17,22 @@
       <div ng-repeat="comment in activity.comments">
         <p>  {{comment.author}}: {{comment.body}} </p>
       </div>
+      <form class="comment-form" ng-submit="addComment()">
+        <h5>Add Comment</h5>
+        <input type="text" ng-model="body" placeholder="Comment here...">
+        <button ng-click="submit">Post</button>
+      </form>
     </div>
 
   </div>
 
-
+  <form class="activity-form" ng-submit="vm.addActivity()">
+    <h4>Add an Activity</h4>
+    <p> Title: <input type="text" ng-model="vm.title"> </p>
+    <p> <input type="radio" ng-model="vm.at_home" ng-value="true"> Stay at Home <input type="radio" ng-model="vm.at_home" ng-value="false"> Go Out </p>
+    <p> <input type="radio" ng-model="vm.be_active" ng-value="true"> Let's be active <input type="radio" ng-model="vm.be_active" ng-value="false"> Take it easy</p>
+    <p> <input type="radio" ng-model="vm.under_two" ng-value="true"> Under 2 y.o. <input type="radio" ng-model="vm.under_two" ng-value="false"> Over 2 y.o.</p>
+    <p> Summary: <input type="text" ng-model="vm.summary"> </p>
+    <p> Image Link: <input type="text" ng-model="vm.image_url"> </p>
+    <button ng-click="submit">Submit</button>
+  </form>

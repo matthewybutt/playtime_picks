@@ -1,20 +1,19 @@
-var mongoose = require('./config/database');
+var mongoose = require('./database');
 
 var User = require('../models/user');
 var Activity = require('../models/activity');
+var Comments = require('../models/comment');
 
 var users = [
   { // 0
     name:   "Matt",
     email: "matt@email.com",
-    googleId: "googleId_01"
     // activities: "Activity 1"
   },
 
   { // 1
     name:   "Lauren",
     email: "lauren@email.com",
-    googleId: "googleId_02"
     // activities: "Activity 2"
   }
 ];
@@ -37,10 +36,10 @@ var activities = [
     be_active: false,
     under_two: false,
     summary: "Get some crayons and paper and make a card for someone!",
-    // image_url: ,
+    image_url: "",
     activity_date: 2015-12-07,
-    favorite: true
-    // comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
+    favorite: false
+    // comments: [{author: "Lauren", body: "I like this activity!"}]
   },
 
   { // 1
@@ -49,10 +48,10 @@ var activities = [
     be_active: true,
     under_two: false,
     summary: "Find a local park and go nuts!",
-    // image_url: ,
+    image_url: "",
     activity_date: 2015-12-08,
-    favorite: true
-    // comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
+    favorite: false
+    // comments: [{author: "Viv", body: "This activity can get a little boring."}]
   }
 ];
 
