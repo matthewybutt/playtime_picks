@@ -11,6 +11,7 @@
       var vm = this;
       vm.activity = activityDataService;
 
+
       // vm.addComment = addComment;
 
       // function addComment(){
