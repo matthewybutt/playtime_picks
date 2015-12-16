@@ -14,44 +14,21 @@
 
   <h1>Playtime Picks</h1>
 
-
   <button ui-sref-active="active" ui-sref="home"> Home </button>
   <button ui-sref-active="active" ui-sref="activities"> Activities </button>
   <button ui-sref-active="active" ui-sref="about"> About </button>
+  <button ui-sref-active="active" ui-sref="register"> Sign Up </button>
 
   <ui-view></ui-view>
 
-  <!-- <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' ">
-    <h4> {{activity.title}} </h4>
-    <span ng-click="vm.addFavCount(activity)">
-      <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
-    </span>
-    <p> Favorite: {{activity.favorite}} </p>
-    <p> Fav'ed: {{activity.fav_counter}} </p>
-    <p> {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
-    <p> <span ng-show="activity.at_home"> Stay at Home </span>       <span ng-hide="activity.at_home"> Go Out </span>
-    |   <span ng-show="activity.be_active"> Let's Be Active </span>  <span ng-hide="activity.be_active"> Take it easy </span>
-    |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
-    </p>
-    <p> {{activity.summary}} </p>
-  </div>
-
-  <form class="activity-form" ng-submit="vm.addActivity()">
-    <h4>Add an Activity</h4>
-    <p> Title: <input type="text" ng-model="vm.title"> </p>
-    <p> <input type="radio" ng-model="vm.at_home" ng-value="true"> Stay at Home <input type="radio" ng-model="vm.at_home" ng-value="false"> Go Out </p>
-    <p> <input type="radio" ng-model="vm.be_active" ng-value="true"> Let's be active <input type="radio" ng-model="vm.be_active" ng-value="false"> Take it easy</p>
-    <p> <input type="radio" ng-model="vm.under_two" ng-value="true"> Under 2 y.o. <input type="radio" ng-model="vm.under_two" ng-value="false"> Over 2 y.o.</p>
-    <p> Summary: <input type="text" ng-model="vm.summary"> </p>
-    <p> Image Link: <input type="text" ng-model="vm.image_url"> </p>
-    <button ng-click="submit">Submit</button>
-  </form> -->
 
 <!-- Angular Scripts -->
   <script src="/app.js"></script>
   <script src="/app.routes.js"></script>
   <script src="/services/activity.dataservice.js"></script>
+  <script src="/services/user.dataservice.js"></script>
   <script src="/controllers/main_controller.js"></script>
   <script src="/controllers/activities_controller.js"></script>
+  <script src="/controllers/users_controller.js"></script>
 </body>
 </html>

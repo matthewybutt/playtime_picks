@@ -22,6 +22,12 @@
         controller: "ActivitiesController",
         controllerAs: "vm"
       })
+      .state("register", {
+        url: "/register",
+        templateUrl: "/templates/register.html",
+        controller: "UsersController",
+        controllerAs: "vm"
+      })
       .state("about", {
         url: "/about",
         templateUrl:  "/templates/about.html"
