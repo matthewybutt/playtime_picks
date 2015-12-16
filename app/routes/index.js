@@ -19,5 +19,9 @@ router.get('/users/:id', usersController.show);// users resource paths:
 router.get('/activities',     activitiesController.index);
 router.get('/activities/:id', activitiesController.show);
 router.post('/activities/new', activitiesController.create);
+router.put('/activities/:id', activitiesController.update);
+router.delete('/activities/:id', activitiesController.destroy);
+
+// router.post('/activities/:id/comments', )
 
 module.exports = router;
