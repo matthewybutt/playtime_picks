@@ -14,6 +14,9 @@ router.get('/', function(req, res, next) {
 // users resource paths:
 router.get('/users',     usersController.index);
 router.get('/users/:id', usersController.show);// users resource paths:
+router.post('/users/new', usersController.create);
+router.put('/users/:id', usersController.update);
+router.delete('/users/:id', usersController.destroy);
 
 //activities resource paths:
 router.get('/activities',     activitiesController.index);
