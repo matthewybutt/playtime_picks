@@ -50,44 +50,44 @@
       //   }
       // ];
 
-      vm.addActivity = addActivity;
-      vm.addFavCount = addFavCount;
+      // vm.addActivity = addActivity;
+      // vm.addFavCount = addFavCount;
 
-      function addActivity(){
-        vm.activities.push(
-          {
-            title: vm.title,
-            at_home: vm.at_home,
-            be_active: vm.be_active,
-            under_two: vm.under_two,
-            summary: vm.summary,
-            image_url: vm.image_url,
-            activity_date: new Date(),
-            favorite: false,
-            fav_counter: 0,
-            comments: [
-            {author: "Lauren", body: "I like this activity!"},
-            {author: "Viv", body: "This activity can get a little boring."}
-            ]
-          }
-        );
-        vm.title = "";
-        vm.at_home = "true";
-        vm.be_active = "true";
-        vm.under_two = "true";
-        vm.summary = "";
-        vm.image_url = "";
-      };
+      // function addActivity(){
+      //   vm.activities.push(
+      //     {
+      //       title: vm.title,
+      //       at_home: vm.at_home,
+      //       be_active: vm.be_active,
+      //       under_two: vm.under_two,
+      //       summary: vm.summary,
+      //       image_url: vm.image_url,
+      //       activity_date: new Date(),
+      //       favorite: false,
+      //       fav_counter: 0,
+      //       comments: [
+      //       {author: "Lauren", body: "I like this activity!"},
+      //       {author: "Viv", body: "This activity can get a little boring."}
+      //       ]
+      //     }
+      //   );
+      //   vm.title = "";
+      //   vm.at_home = "true";
+      //   vm.be_active = "true";
+      //   vm.under_two = "true";
+      //   vm.summary = "";
+      //   vm.image_url = "";
+      // };
 
-      function addFavCount(activity){
-        // $log.log("click");
-        activity.favorite = !activity.favorite;
-        if (activity.favorite === true){
-          (activity.fav_counter +=1)
-        } else {
-          (activity.fav_counter -=1)
-        };
-      };
+      // function addFavCount(activity){
+      //   // $log.log("click");
+      //   activity.favorite = !activity.favorite;
+      //   if (activity.favorite === true){
+      //     (activity.fav_counter +=1)
+      //   } else {
+      //     (activity.fav_counter -=1)
+      //   };
+      // };
 
     };
 })();

@@ -9,35 +9,68 @@
 
     function ActivitiesController($log, $scope, $http, activityDataService){
       var vm = this;
-      vm.activity = activityDataService;
 
       vm.getActivities = getActivities;
 
-      vm.activities = vm.activity.all;
+      vm.activities = activityDataService.all;
 
       vm.getActivities();
 
-      $log.log(vm.activities);
 
       function getActivities (){
-        vm.activity.getActivities();
-        vm.activities = vm.activity.all;
+        activityDataService.getActivities();
+        vm.activities = activityDataService.all;
       }
 
-      // vm.addComment = addComment;
+      vm.createActivity = createActivity;
+      vm.addFavCount = addFavCount;
 
-      // function addComment(){
-      //   $log.log("click");
-      //   if(vm.comments.body === "") {return;}
-      //   $log.log(vm.activity);
-      //   vm.activity.comments.push(
-      //     {
-      //       author: "user",
-      //       body: vm.comments.body
-      //     }
-      //   );
-      //   vm.comments.body = "";
-      //   };
+      function createActivity(){
+        activityDataService.createActivity(vm.activityData)
+          .success(function(data) {
+            vm.activities.push(
+              {
+                title: vm.activityData.title,
+                at_home: vm.activityData.at_home,
+                be_active: vm.activityData.be_active,
+                under_two: vm.activityData.under_two,
+                summary: vm.activityData.summary,
+                image_url: vm.activityData.image_url,
+                activity_date: new Date(),
+                favorite: false,
+                fav_counter: 0,
+                comments: []
+              }
+            );
+            vm.activityData = {};
+          });
+        $log.log(vm.activityData);
+      };
+
+      function addFavCount(activity){
+        // $log.log("click");
+        activity.favorite = !activity.favorite;
+        if (activity.favorite === true){
+          (activity.fav_counter +=1)
+        } else {
+          (activity.fav_counter -=1)
+        };
+      };
+
+      vm.addComment = function addComment(activity, comment){
+        $log.log("click add comment");
+        if(comment.body) {
+          $log.log(vm.activity);
+          $http.post('/api/activities/' + activity._id + '/comments',
+            {
+              body: comment.body
+            }
+          ).then(function(res) {
+            activity.comments.push(res.data);
+          });
+          comment.body = "";
+        }
+      };
 
     }
 

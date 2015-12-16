@@ -4,7 +4,6 @@ var router = express.Router();
 // Require controllers.
 var usersController   = require('../controllers/users');
 var activitiesController   = require('../controllers/activities');
-var commentsController = require('../controllers/comments');
 
 // GET home page
 router.get('/', function(req, res, next) {
@@ -24,6 +23,8 @@ router.get('/activities/:id', activitiesController.show);
 router.post('/activities/new', activitiesController.create);
 router.put('/activities/:id', activitiesController.update);
 router.delete('/activities/:id', activitiesController.destroy);
+
+router.post('/activities/:id/comments', activitiesController.createComment);
 
 // router.post('/activities/:id/comments', )
 

@@ -3,7 +3,7 @@ var Activity = require("../models/activity");
 
 //Get All Activities
 var index = function(req, res, next){
-  Activity.find({}, function(err, activities){
+  Activity.find({}).populate('comments.author').exec(function(err, activities){
     if (err) {
       res.send(err);
     }
@@ -77,10 +77,26 @@ var destroy = function(req, res) {
   });
 };
 
+var createComment = function(req, res) {
+  Activity.findById(req.params.id, function(err, activity) {
+    activity.comments.push({
+      body: req.body.body,
+      author: req.body._id
+      // author: '5670903aa273ce43d355841d'
+    });
+    activity.save(function(err) {
+      Activity.findById(req.params.id).populate('comments.author').exec(function(err, activity) {
+        res.json(activity.comments.pop());
+      })
+    });
+  });
+}
+
 module.exports = {
   index: index,
   show:  show,
   create: create,
   update: update,
-  destroy: destroy
+  destroy: destroy,
+  createComment: createComment
 };

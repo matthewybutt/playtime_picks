@@ -15,18 +15,16 @@
     <div class="comment-window">
       <p>Comments-</p>
       <div ng-repeat="comment in activity.comments">
-        <p>  {{comment.author}}: {{comment.body}} </p>
+        <p>  {{comment.author.name}} <small>({{comment.author.email}})</small>: {{comment.body}} </p>
       </div>
-      <form class="comment-form" ng-submit="addComment()">
-        <h5>Add Comment</h5>
-        <input type="text" ng-model="body" placeholder="Comment here...">
-        <button ng-click="submit">Post</button>
-      </form>
+      <h5>Add Comment</h5>
+      <input type="text" ng-model="comment.body" placeholder="Comment here...">
+      <button ng-click="vm.addComment(activity, comment)">Post</button>
     </div>
 
   </div>
 
-  <form class="activity-form" ng-submit="vm.addActivity()">
+  <form class="activity-form" ng-submit="vm.createActivity()">
     <h4>Add an Activity</h4>
     <p> Title: <input type="text" ng-model="vm.title"> </p>
     <p> <input type="radio" ng-model="vm.at_home" ng-value="true"> Stay at Home <input type="radio" ng-model="vm.at_home" ng-value="false"> Go Out </p>
