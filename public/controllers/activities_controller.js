@@ -5,23 +5,26 @@
     .module('playtimePicks')
     .controller('ActivitiesController', ActivitiesController);
 
-    ActivitiesController.$inject = ["$log", "$scope", "$stateParams", "activityDataService"];
+    ActivitiesController.$inject = ["$log", "$scope", "$http", "activityDataService"];
 
-    function ActivitiesController($log, $scope, $stateParams, activityDataService){
-      $scope.activity = activityDataService[$stateParams.id];
+    function ActivitiesController($log, $scope, $http, activityDataService){
+      var vm = this;
+      vm.activity = activityDataService;
 
-      $scope.addComment = function(){
-        $log.log("click");
-        if($scope.body === "") {return;}
-        $log.log($scope.activity);
-        $scope.activity.comments.push(
-          {
-            author: "user",
-            body: $scope.body
-          }
-        );
-        $scope.body = "";
-        };
+      // vm.addComment = addComment;
+
+      // function addComment(){
+      //   $log.log("click");
+      //   if(vm.comments.body === "") {return;}
+      //   $log.log(vm.activity);
+      //   vm.activity.comments.push(
+      //     {
+      //       author: "user",
+      //       body: vm.comments.body
+      //     }
+      //   );
+      //   vm.comments.body = "";
+      //   };
 
     }
 

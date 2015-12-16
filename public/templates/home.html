@@ -1,4 +1,4 @@
-  <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' ">
+  <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter' | filter:{at_home:filter.at_home, be_active:filter.be_active, under_two:filter.under_two}">
     <h4> {{activity.title}} </h4>
     <span ng-click="vm.addFavCount(activity)">
       <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
@@ -11,6 +11,15 @@
     |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
     </p>
     <p> Summary: {{activity.summary}} </p>
+  </div>
+
+  <div class="filter-form">
+    <p> <input type="radio" ng-model="filter.at_home" value="true"> Stay at Home
+        <input type="radio" ng-model="filter.at_home" value="false"> Go Out </p>
+    <p> <input type="radio" ng-model="filter.be_active" value="true"> Let's be active
+        <input type="radio" ng-model="filter.be_active" value="false"> Take it easy</p>
+    <p> <input type="radio" ng-model="filter.under_two" value="true"> Under 2 y.o.
+        <input type="radio" ng-model="filter.under_two" value="false"> Over 2 y.o.</p>
   </div>
 
   <form class="activity-form" ng-submit="vm.addActivity()">
