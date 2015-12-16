@@ -11,6 +11,18 @@
       var vm = this;
       vm.activity = activityDataService;
 
+      vm.getActivities = getActivities;
+
+      vm.activities = vm.activity.all;
+
+      vm.getActivities();
+
+      $log.log(vm.activities);
+
+      function getActivities (){
+        vm.activity.getActivities();
+        vm.activities = vm.activity.all;
+      }
 
       // vm.addComment = addComment;
 

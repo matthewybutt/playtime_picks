@@ -8,16 +8,16 @@
   activityDataService.$inject = ["$http"];
 
   function activityDataService($http){
-    var vm = this;
-    var activities = [];
 
-    vm.getActivities = getActivities;
+    var activities = {};
 
-    vm.getActivities();
+    activities.all = [];
 
-    function getActivities() {
-      $http.get('/api/activities').then(function(response) {
-        vm.activities = response.data;
+
+
+    activities.getActivities = function() {
+      return $http.get('/api/activities').then(function(response) {
+        activities.all = response.data;
       }, function(errRes) {
         console.error('Error getting activities!', errRes);
       });
