@@ -5,17 +5,20 @@
       .module("playtimePicks")
       .controller("MainController", MainController);
 
-    MainController.$inject = ["$log", "activityDataService", "$state", "authService", "userDataService"];
+    MainController.$inject = ["$log", "$state", "authService", "userDataService"];
 
-    function MainController($log, activityDataService, $state, authService, userDataService) {
+    function MainController($log, $state, authService, userDataService) {
        var vm = this;
 
+       // vm.currentUser = userDataService.user;
        vm.currentUser = authService.currentUser;
+
        vm.logout = authService.logout;
        vm.isLoggedIn = authService.isLoggedIn;
 
        vm.$state = $state;
 
+       // $log.log(vm.currentUser);
 
       // vm.activities = activityDataService;
 

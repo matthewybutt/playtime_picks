@@ -26,6 +26,7 @@ router.put('/activities/:id',    usersController.tokenVerify, activitiesControll
 router.delete('/activities/:id', usersController.tokenVerify, activitiesController.destroy);
 
 router.post('/activities/:id/comments', usersController.tokenVerify, activitiesController.createComment);
+router.put('/activities/:id/favCount',  usersController.tokenVerify, activitiesController.favCount);
 
 
 module.exports = router;

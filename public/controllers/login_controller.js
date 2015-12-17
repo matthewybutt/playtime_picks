@@ -25,6 +25,5 @@
             $state.go('activities');
           });
       }
-          $log.log(vm.currentUser);
   }
 })();

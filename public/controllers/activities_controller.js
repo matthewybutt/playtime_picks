@@ -5,9 +5,9 @@
     .module('playtimePicks')
     .controller('ActivitiesController', ActivitiesController);
 
-    ActivitiesController.$inject = ["$log", "$scope", "$http", "activityDataService", "userDataService"];
+    ActivitiesController.$inject = ["$log", "$scope", "$http", "activityDataService", "userDataService", "$stateParams"];
 
-    function ActivitiesController($log, $scope, $http, activityDataService, userDataService){
+    function ActivitiesController($log, $scope, $http, activityDataService, userDataService, $stateParams){
       var vm = this;
 
       vm.currentUser = userDataService.user;
@@ -15,6 +15,8 @@
       vm.getActivities = getActivities;
 
       vm.activities = activityDataService.all;
+
+      vm.activity = activityDataService._id;
 
       vm.getActivities();
 
@@ -30,6 +32,7 @@
       function createActivity(){
         activityDataService.createActivity(vm.activityData)
           .success(function(data) {
+        $log.log(vm.currentUser._id);
             vm.activities.push(
               {
                 title: vm.activityData.title,
@@ -46,24 +49,31 @@
             );
             vm.activityData = {};
           });
-        $log.log(vm.activityData);
+        // $log.log(vm.activityData);
       };
 
       function addFavCount(activity){
         // $log.log("click");
         activity.favorite = !activity.favorite;
         if (activity.favorite === true){
-          (activity.fav_counter +=1)
-        } else {
-          (activity.fav_counter -=1)
+            (activity.fav_counter +=1)
+          } else {
+            (activity.fav_counter -=1)
+          };
+        // $http.put('/api/activities/' + activity._id + '/favCount',
+        // {
+        //   favorite: activity.favorite,
+        //   fav_counter: activity.fav_counter
+        // }
+        // ).then(getActivities);
+
         };
-      };
 
       vm.addComment = function addComment(activity, comment){
-        $log.log("click add comment");
+        // $log.log("click add comment");
         if(comment.body) {
-          $log.log(vm.activity);
-          $log.log(vm.currentUser._id);
+          // $log.log(vm.activity);
+          // $log.log(vm.currentUser._id);
           $http.post('/api/activities/' + activity._id + '/comments',
             {
               body: comment.body,

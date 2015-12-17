@@ -24,8 +24,11 @@ var show = function(req, res, next){
 
 //Create an Activity
 var create = function(req, res, next){
+  console.log(req.body.author);
+  console.log(req.body.title);
   var activity = new Activity();
 
+  activity.author = req.body.author,
   activity.title = req.body.title,
   activity.at_home = req.body.at_home,
   activity.be_active = req.body.be_active,
@@ -92,11 +95,30 @@ var createComment = function(req, res) {
   });
 }
 
+var favCount = function(req, res) {
+  Activity.findById(id, function(err, activity){
+    if (err) {
+      res.send(err);
+    }
+    if (req.body.favorite) activity.favorite = req.body.favorite;
+    if (req.body.fav_counter) activity.fav_counter = req.body.fav_counter;
+
+    activity.save(function(err, updatedActivity){
+      if (err){
+        res.send(err);
+      }
+      console.log("Activity updated");
+      res.json(updatedActivity);
+    });
+  });
+};
+
 module.exports = {
   index: index,
   show:  show,
   create: create,
   update: update,
   destroy: destroy,
-  createComment: createComment
+  createComment: createComment,
+  favCount: favCount
 };

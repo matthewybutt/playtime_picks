@@ -14,13 +14,28 @@ a {
 }
 
 .activity-form {
+  text-align: center;
   border: 1px dashed blue;
   margin: 5px;
   padding: 5px;
+  width: 30em;
+}
+
+.summary-field {
+  width: 25em;
+  height: 10em;
 }
 
 .comment-window {
   border: 1px solid green;
+  margin-bottom: 5px;
+  padding: 5px;
+  min-height: 100px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.comment-container {
   margin: 5px;
   padding: 5px;
 }
