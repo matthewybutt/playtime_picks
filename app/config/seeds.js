@@ -2,18 +2,19 @@ var mongoose = require('./database');
 
 var User = require('../models/user');
 var Activity = require('../models/activity');
-var Comments = require('../models/comment');
 
 var users = [
   { // 0
     name:   "Matt",
     email: "matt@email.com",
+    password: "abc123"
     // activities: "Activity 1"
   },
 
   { // 1
     name:   "Lauren",
     email: "lauren@email.com",
+    password: "abc123"
     // activities: "Activity 2"
   }
 ];

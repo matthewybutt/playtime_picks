@@ -5,10 +5,12 @@
     .module('playtimePicks')
     .controller('ActivitiesController', ActivitiesController);
 
-    ActivitiesController.$inject = ["$log", "$scope", "$http", "activityDataService"];
+    ActivitiesController.$inject = ["$log", "$scope", "$http", "activityDataService", "userDataService"];
 
-    function ActivitiesController($log, $scope, $http, activityDataService){
+    function ActivitiesController($log, $scope, $http, activityDataService, userDataService){
       var vm = this;
+
+      vm.currentUser = userDataService.user;
 
       vm.getActivities = getActivities;
 
@@ -61,9 +63,11 @@
         $log.log("click add comment");
         if(comment.body) {
           $log.log(vm.activity);
+          $log.log(vm.currentUser._id);
           $http.post('/api/activities/' + activity._id + '/comments',
             {
-              body: comment.body
+              body: comment.body,
+              author: vm.currentUser._id
             }
           ).then(function(res) {
             activity.comments.push(res.data);

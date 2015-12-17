@@ -13,7 +13,7 @@
       .state("home", {
         url: "/",
         templateUrl: "/templates/home.html",
-        controller: "ActivitiesController",
+        controller: "MainController",
         controllerAs: "vm"
       })
       .state("activities", {
@@ -26,6 +26,12 @@
         url: "/register",
         templateUrl: "/templates/register.html",
         controller: "UsersController",
+        controllerAs: "vm"
+      })
+      .state("login", {
+        url: "/login",
+        templateUrl: "/templates/login.html",
+        controller: "LoginController",
         controllerAs: "vm"
       })
       .state("about", {

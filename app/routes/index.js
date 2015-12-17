@@ -11,21 +11,21 @@ router.get('/', function(req, res, next) {
 });
 
 // users resource paths:
-router.get('/users',     usersController.index);
-router.get('/users/:id', usersController.show);// users resource paths:
-router.post('/users/new', usersController.create);
-router.put('/users/:id', usersController.update);
-router.delete('/users/:id', usersController.destroy);
+router.get('/users',                                      usersController.index);
+router.get('/users/:id',                                  usersController.show);
+router.post('/users/new',                                 usersController.create);
+router.post('/login',                                     usersController.userAuth);
+router.put('/users/:id',    usersController.tokenVerify, usersController.update);
+router.delete('/users/:id', usersController.tokenVerify, usersController.destroy);
 
-//activities resource paths:
-router.get('/activities',     activitiesController.index);
-router.get('/activities/:id', activitiesController.show);
-router.post('/activities/new', activitiesController.create);
-router.put('/activities/:id', activitiesController.update);
-router.delete('/activities/:id', activitiesController.destroy);
+// activities resource paths:
+router.get('/activities',                                      activitiesController.index);
+router.get('/activities/:id',                                  activitiesController.show);
+router.post('/activities/new',   usersController.tokenVerify, activitiesController.create);
+router.put('/activities/:id',    usersController.tokenVerify, activitiesController.update);
+router.delete('/activities/:id', usersController.tokenVerify, activitiesController.destroy);
 
-router.post('/activities/:id/comments', activitiesController.createComment);
+router.post('/activities/:id/comments', usersController.tokenVerify, activitiesController.createComment);
 
-// router.post('/activities/:id/comments', )
 
 module.exports = router;

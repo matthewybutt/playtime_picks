@@ -79,10 +79,10 @@ var destroy = function(req, res) {
 
 var createComment = function(req, res) {
   Activity.findById(req.params.id, function(err, activity) {
+    console.log(req.body.author);
     activity.comments.push({
       body: req.body.body,
-      author: req.body._id
-      // author: '5670903aa273ce43d355841d'
+      author: req.body.author
     });
     activity.save(function(err) {
       Activity.findById(req.params.id).populate('comments.author').exec(function(err, activity) {

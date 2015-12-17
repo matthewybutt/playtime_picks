@@ -13,11 +13,19 @@
 <body ng-controller="MainController as vm">
 
   <h1>Playtime Picks</h1>
+  <div ng-hide="vm.isLoggedIn()">
+    <h5>Please Log In or Sign Up</h5>
+  </div>
+  <div ng-show="vm.isLoggedIn()">
+    <h5>Welcome {{vm.currentUser}}</h5>
+  </div>
 
   <button ui-sref-active="active" ui-sref="home"> Home </button>
   <button ui-sref-active="active" ui-sref="activities"> Activities </button>
   <button ui-sref-active="active" ui-sref="about"> About </button>
-  <button ui-sref-active="active" ui-sref="register"> Sign Up </button>
+  <button ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="register"> Sign Up </button>
+  <button ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="login"> Log In </button>
+  <button ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()"> Log Out </button>
 
   <ui-view></ui-view>
 
@@ -27,8 +35,11 @@
   <script src="/app.routes.js"></script>
   <script src="/services/activity.dataservice.js"></script>
   <script src="/services/user.dataservice.js"></script>
+  <script src="/services/auth.service.js"></script>
   <script src="/controllers/main_controller.js"></script>
   <script src="/controllers/activities_controller.js"></script>
   <script src="/controllers/users_controller.js"></script>
+  <script src="/controllers/login_controller.js
+"></script>
 </body>
 </html>
