@@ -20,7 +20,8 @@
             or <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="register">Sign Up</a> </h5>
       </div>
       <div ng-show="vm.isLoggedIn()">
-        <h5>You're logged in!</h5>
+        <h5>You're logged in!
+        <a ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()">Log Out</a> </h5>
       </div>
 
       <button ui-sref-active="active" ui-sref="home"> Home </button>
