@@ -12,23 +12,26 @@
 </head>
 <body ng-controller="MainController as vm">
 
-  <h1>Playtime Picks</h1>
-  <div ng-hide="vm.isLoggedIn()">
-    <h5>Please Log In or Sign Up</h5>
+  <div id="container">
+    <div id="top-container">
+      <h1>Playtime Picks</h1>
+      <div ng-hide="vm.isLoggedIn()">
+        <h5>Please <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="login">Log In</a>
+            or <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="register">Sign Up</a> </h5>
+      </div>
+      <div ng-show="vm.isLoggedIn()">
+        <h5>You're logged in!</h5>
+      </div>
+
+      <button ui-sref-active="active" ui-sref="home"> Home </button>
+      <button ui-sref-active="active" ui-sref="activities"> Activities </button>
+      <button ui-sref-active="active" ui-sref="addActivity"> Add Activity </button>
+      <button ui-sref-active="active" ui-sref="about"> About </button>
+      <button ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()"> Log Out </button>
+    </div>
+
+   <ui-view></ui-view>
   </div>
-  <div ng-show="vm.isLoggedIn()">
-    <h5>You're logged in!</h5>
-  </div>
-
-  <button ui-sref-active="active" ui-sref="home"> Home </button>
-  <button ui-sref-active="active" ui-sref="activities"> Activities </button>
-  <button ui-sref-active="active" ui-sref="about"> About </button>
-  <button ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="register"> Sign Up </button>
-  <button ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="login"> Log In </button>
-  <button ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()"> Log Out </button>
-
-  <ui-view></ui-view>
-
 
 <!-- Angular Scripts -->
   <script src="/app.js"></script>

@@ -1,83 +1,56 @@
-  <!-- Activities List -->
-  <div class="container-fluid">
-    <div class="row">
-    <div class="activity-list col-sm-8" ng-repeat="activity in vm.activities | orderBy: '-fav_counter'| filter:{at_home:filter.at_home, be_active:filter.be_active, under_two:filter.under_two}">
-      <h4> <a ng-model="activity._id" value="{{activity._id}}">  {{activity.title}} </a> </h4>
-      <span ng-click="vm.addFavCount(activity)">
-        <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
-      <!-- <p> Favorite: {{activity.favorite}} </p> -->
-       {{activity.fav_counter}}
-      </span>
-      <p> Date Posted: {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
-      <p> <span ng-show="activity.at_home"> Stay at Home </span>       <span ng-hide="activity.at_home"> Go Out </span>
-      |   <span ng-show="activity.be_active"> Let's Be Active </span>  <span ng-hide="activity.be_active"> Take it easy </span>
-      |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
-      </p>
-      <p> Summary: {{activity.summary}} </p>
-      <hr>
-      <div class="comment-container">
-        <p>Comments:</p>
-        <div class="comment-window">
-          <div ng-repeat="comment in activity.comments">
-            <p>  {{comment.author.name}} <small>({{comment.author.email}})</small>: {{comment.body}} </p>
-          <hr>
-          </div>
+<!-- Filter Form -->
+<div class="filter-container">
+  <div class="filter-form">
+    <h4>Filter Activities</h4>
+    <p>Select one option from each line to filter your choices</p>
+    <table id="radio-table">
+      <tr>
+        <td>I want to: </td>
+        <td> <input type="radio" ng-model="filter.at_home" value="true"> Stay at Home </td>
+        <td> <input type="radio" ng-model="filter.at_home" value="false"> Go Out </td>
+      </tr>
+      <tr>
+        <td>And then: </td>
+        <td> <input type="radio" ng-model="filter.be_active" value="true"> Let's be active </td>
+        <td> <input type="radio" ng-model="filter.be_active" value="false"> Take it easy </td>
+      </tr>
+      <tr>
+        <td>My child is: </td>
+        <td> <input type="radio" ng-model="filter.under_two" value="true"> Under 2 y.o. </td>
+        <td> <input type="radio" ng-model="filter.under_two" value="false"> Over 2 y.o. </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- Activities List -->
+<div class="activities-container">
+  <div class="activity-list" ng-repeat="activity in vm.activities | orderBy: '-fav_counter'| filter:{at_home:filter.at_home, be_active:filter.be_active, under_two:filter.under_two}">
+    <h4> <a ng-model="activity._id" value="{{activity._id}}">  {{activity.title}} </a> </h4>
+    <span ng-click="vm.addFavCount(activity)">
+      <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
+    <!-- <p> Favorite: {{activity.favorite}} </p> -->
+     {{activity.fav_counter}}
+    </span>
+    <p> Date Posted: {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
+    <p> <span ng-show="activity.at_home"> Stay at Home </span>       <span ng-hide="activity.at_home"> Go Out </span>
+    |   <span ng-show="activity.be_active"> Let's Be Active </span>  <span ng-hide="activity.be_active"> Take it easy </span>
+    |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
+    </p>
+    <p> Summary: {{activity.summary}} </p>
+    <hr>
+    <div class="comment-container">
+      <p>Comments:</p>
+      <div class="comment-window">
+        <div ng-repeat="comment in activity.comments">
+          <p>  {{comment.author.name}}: {{comment.body}} </p>
+        <hr>
         </div>
-        <span>
-          <input type="text" ng-model="comment.body" placeholder="Add comment here...">
-          <button ng-click="vm.addComment(activity, comment)">Post</button>
-        </span>
       </div>
-    </div>
-
-  <!-- Dynamic Filter Form -->
-    <div class="col-sm-4">
-      <div class="filter-form">
-        <h4>Filter Activities</h4>
-        <p>Select one option from each line to filter your choices</p>
-        <table id="radio-table">
-          <tr>
-            <td> <input type="radio" ng-model="filter.at_home" value="true"> Stay at Home </td>
-            <td> <input type="radio" ng-model="filter.at_home" value="false"> Go Out </td>
-          </tr>
-          <tr>
-            <td> <input type="radio" ng-model="filter.be_active" value="true"> Let's be active </td>
-            <td> <input type="radio" ng-model="filter.be_active" value="false"> Take it easy </td>
-          </tr>
-          <tr>
-            <td> <input type="radio" ng-model="filter.under_two" value="true"> Under 2 y.o. </td>
-            <td> <input type="radio" ng-model="filter.under_two" value="false"> Over 2 y.o. </td>
-          </tr>
-        </table>
-      </div>
-
-    <!-- Create Activity Form -->
-      <form class="activity-form" ng-submit="vm.createActivity()">
-        <h4>Add an Activity</h4>
-
-        <div> Title: <input type="text" ng-model="vm.activityData.title"> </div>
-
-        <table id="radio-table">
-          <tr>
-            <td> <input type="radio" ng-model="vm.activityData.at_home" ng-value="true"> Stay at Home </td>
-            <td> <input type="radio" ng-model="vm.activityData.at_home" ng-value="false"> Go Out </td>
-          </tr>
-          <tr>
-            <td> <input type="radio" ng-model="vm.activityData.be_active" ng-value="true"> Let's be active </td>
-            <td> <input type="radio" ng-model="vm.activityData.be_active" ng-value="false"> Take it easy</td>
-          </tr>
-          <tr>
-            <td> <input type="radio" ng-model="vm.activityData.under_two" ng-value="true"> Under 2 y.o. </td>
-            <td> <input type="radio" ng-model="vm.activityData.under_two" ng-value="false"> Over 2 y.o.</td>
-          </tr>
-        </table>
-          <div> Summary:
-            <input class="summary-field "type="text" ng-model="vm.activityData.summary">
-          </div>
-<!--             <td> Image Link: </td>
-            <td> <input type="text" ng-model="vm.activityData.image_url"> </td> -->
-        <button ng-click="submit">Submit</button>
-      </form>
+      <span>
+        <input class="comment-input" type="text" ng-model="comment.body" placeholder="Add comment here...">
+        <button ng-click="vm.addComment(activity, comment)">Post</button>
+      </span>
     </div>
   </div>
 </div>
+
