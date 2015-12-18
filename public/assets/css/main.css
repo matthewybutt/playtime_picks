@@ -1,13 +1,20 @@
+/*
+font-family: 'Butterfly Kids', cursive;
+font-family: 'Alegreya Sans', sans-serif;
+*/
+
 html{
   height: 100%;
 }
 
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: linear-gradient(#efdaba, #97b34b) no-repeat center center fixed;
-  background-size: cover;
+  font: 16px 'Alegreya Sans', sans-serif;
+  background:
+  url(../images/playground.png) no-repeat center bottom fixed,
+  linear-gradient(#efdaba, #97b34b) no-repeat center center fixed;
   min-height: 100%;
+
 }
 
 a {
@@ -29,6 +36,11 @@ a {
 #top-container {
   text-align: center;
   margin: 0 5px 20px;
+}
+
+.title {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 110px;
 }
 
 .activities-container {
@@ -62,9 +74,13 @@ a {
 
 .activity-summary {
   border: 1px solid grey;
-  width: 500px;
+  width: 550px;
   margin: auto;
   padding: 5px;
+}
+
+.activity-summary p {
+  line-height: 5px;
 }
 
 /*Comment Form*/
@@ -76,7 +92,8 @@ a {
   max-height: 150px;
   overflow: auto;
   border-radius: 0 0 0.5em 0.5em;
-  font-size: 12px;
+  font-size: 14px;
+  background-color: #FCFCF3;
 }
 
 .comment-container {
@@ -100,8 +117,8 @@ a {
   text-align: center;
   border: 1px solid black;
   margin: auto;
-  padding: 5px;
-  width: 400px;
+  padding: 10px;
+  width: 450px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -122,6 +139,7 @@ a {
   max-height: 10em;
   min-width: 25em;
   min-height: 10em;
+  background-color: #FCFCF3;
 }
 
 .activity-form button {
@@ -168,6 +186,7 @@ a {
   max-width: 225px;
   align-items: center;
   background-color: white;
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 .login-form h4, input, button {
@@ -182,6 +201,7 @@ a {
   max-width: 225px;
   align-items: center;
   background-color: white;
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 .register-form h4, input, button {
@@ -196,19 +216,45 @@ a {
   max-width: 600px;
   align-items: center;
   background-color: white;
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.about-container h1 {
+  font-family: 'Butterfly Kids', cursive;
 }
 
 .about-container hr {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 0;
-    border-top: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid black;
+}
+
+/*Navigation Buttons*/
+.nav-btn {
+  background-color: #97b34b;
+  border-radius: 0.5em;
+  padding: 5px;
+  margin: 4px;
+  color: #efdaba;
+  font-size: 20px;
+  border: thin;
+}
+
+.active {
+  background-color: #efdaba;
+  color: #425517;
 }
 
 /*Misc Styling*/
 #login-warn {
   color: red;
   text-align: center;
+}
+
+.header-font {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 40px;
 }
 
 .box-shadow--2dp {

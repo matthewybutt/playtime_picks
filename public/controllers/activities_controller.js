@@ -7,7 +7,7 @@
 
     ActivitiesController.$inject = ["$state","$log", "$scope", "$http", "activityDataService", "userDataService", "authService"];
 
-    function ActivitiesController($state,$log, $scope, $http, activityDataService, userDataService, authService){
+    function ActivitiesController($state, $log, $scope, $http, activityDataService, userDataService, authService){
       var vm = this;
 
       vm.currentUser = userDataService.user;
@@ -25,7 +25,7 @@
       vm.getActivity = getActivity;
       vm.addFavCount = addFavCount;
 
-      $log.log(vm.currentUser);
+      // $log.log(vm.currentUser);
 
       function getActivities (){
         activityDataService.getActivities();
@@ -33,10 +33,10 @@
       }
 
       function createActivity(){
-        $log.log(vm.activityData.author);
+        // $log.log(vm.activityData.author);
         activityDataService.createActivity(vm.activityData)
           .success(function(data) {
-        $log.log(vm.currentUser._id);
+        // $log.log(vm.currentUser._id);
             vm.activities.push(
               {
                 title: vm.activityData.title,
@@ -52,6 +52,7 @@
               }
             );
             vm.activityData = {};
+            $state.go('activities');
           });
         // $log.log(vm.activityData);
       };
@@ -59,20 +60,20 @@
       function getActivity(id){
         activityDataService.getActivity(id).then(function(response){
             vm.activity = response.data;
-        $log.log("activity is " +vm.activity.title);
+        // $log.log("activity is " +vm.activity.title);
 
           }, function(errRes) {
             console.error('Error getting activity!', errRes);
           });
 
-        $log.log("activity is " +vm.activity);
+        // $log.log("activity is " +vm.activity);
       }
 
       vm.addComment = function addComment(activity, comment){
         // $log.log("click add comment");
         if(comment.body) {
           // $log.log(vm.activity);
-          $log.log(vm.currentUser._id);
+          // $log.log(vm.currentUser._id);
           $http.post('/api/activities/' + activity._id + '/comments',
             {
               body: comment.body,

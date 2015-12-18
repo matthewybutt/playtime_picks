@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/animate.css">
+  <link href='https://fonts.googleapis.com/css?family=Butterfly+Kids' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -15,21 +17,21 @@
 
   <div id="container">
     <div id="top-container">
-      <h1>Playtime Picks</h1>
+      <p class="title">Playtime Picks</p>
       <div ng-hide="vm.isLoggedIn()">
-        <h5>Please <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="login">Log In</a>
-            or <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="register">Sign Up</a> </h5>
+        <h4>Please <a ui-sref-active="active" ng-hide="vm.isLoggedIn()" ui-sref="login">Log In</a>
+            or <a ui-sref-active="active" ng-hide="vm.isLoggedIn()" ui-sref="register">Sign Up</a> </h4>
       </div>
       <div ng-show="vm.isLoggedIn()">
-        <h5>You're logged in!
-        <a ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()">Log Out</a> </h5>
+        <h4>You're logged in!
+        <a ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()">Log Out</a> </h4>
       </div>
 
 <!--       <button ui-sref-active="active" ui-sref="home"> Home </button>
  -->
-      <button ui-sref-active="active" ui-sref="activities"> Activities </button>
-      <button ui-sref-active="active" ui-sref="addActivity"> Add Activity </button>
-      <button ui-sref-active="active" ui-sref="about"> About </button>
+      <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="activities"> Activities </button>
+      <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="addActivity"> Add Activity </button>
+      <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="about"> About </button>
     </div>
    <ui-view></ui-view>
   </div>

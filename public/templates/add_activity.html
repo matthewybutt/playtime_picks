@@ -1,7 +1,7 @@
 <!-- Create Activity Form -->
 <div class="activity-form box-shadow--4dp">
   <form  ng-submit="vm.createActivity()">
-    <h4>Add an Activity</h4>
+    <p class="header-font">Add an Activity</p>
 
     <div> Title: <input class="title-field" type="text" ng-model="vm.activityData.title"> </div>
     <br>
@@ -22,7 +22,6 @@
         <td> <input type="radio" ng-model="vm.activityData.under_two" ng-value="false"> Over 2 y.o.</td>
       </tr>
     </table>
-    <input type="text" ng-model="vm.activityData.author" ng-value="vm.currentUser._id">
     <br>
     <span> Summary: </span>
     <textarea class="summary-field "type="text" ng-model="vm.activityData.summary"></textarea>

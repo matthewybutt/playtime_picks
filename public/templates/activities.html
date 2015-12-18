@@ -1,7 +1,7 @@
 <!-- Filter Form -->
 <div class="filter-container" id="sticky-anchor">
   <div class="filter-form box-shadow--4dp" id="sticky">
-    <h4>Filter Activities</h4>
+    <div class="header-font">Filter Activities</div>
     <p>Select one option from each line to filter your choices</p>
     <hr>
     <table id="radio-table">
@@ -30,7 +30,7 @@
     <div class="activity-info">
 <!--       <h4> <a ng-model="activity._id" ng-click="vm.getActivity(activity._id)" ui-sref="activity" value="{{activity._id}}">  {{activity.title}} </a> </h4>
  -->
-      <h2 ng-model="activity._id"> {{activity.title}} </h2>
+      <h1 ng-model="activity._id"> {{activity.title}} </h1>
       <div ng-click="vm.addFavCount(activity)">
         <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
       <!-- <p> Favorite: {{activity.favorite}} </p> -->
@@ -42,15 +42,16 @@
       |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
       </p>
     </div>
-    <div class="activity-summary"> Summary:
+    <p class="activity-summary">
+    <span style="font-weight:bold"> Summary: &nbsp </span>
     <span> {{activity.summary}} </span>
-    </div>
+    </p>
     <hr>
     <div class="comment-container">
       <p>Comments:</p>
       <div class="comment-window box-shadow--2dp">
         <div ng-repeat="comment in activity.comments">
-          <p>  {{comment.author.name}}: {{comment.body}} </p>
+          <p>  {{comment.author.name}}: &nbsp {{comment.body}} </p>
         <hr>
         </div>
       </div>
