@@ -13,11 +13,13 @@ var index = function(req, res, next){
 
 //Get One Activity
 var show = function(req, res, next){
+  console.log("Looking for " + req.params.id)
   var id = req.params.id;
   Activity.findById(id, function(err, activity){
     if (err) {
       res.send(err);
     }
+    console.log("The activity is " + activity);
     res.json(activity);
   });
 };

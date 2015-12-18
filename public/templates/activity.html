@@ -1,25 +1,32 @@
-  <div class="activity-list" ng-repeat="activity in vm.activities | filter:{_id:$location.path()}">
-    <h4> {{activity.title}} </h4>
+  <div class="activity-list box-shadow--4dp activity-info">
+    <h4 ng-model="vm.activity.title"> {{vm.activity.title}} </h4>
     <span ng-click="vm.addFavCount(activity)">
       <i ng-class="{'glyphicon glyphicon-heart': liked, 'glyphicon glyphicon-heart-empty': !liked}" ng-click="liked=!liked"></i>
     </span>
-    <p> Favorite: {{activity.favorite}} </p>
-    <p> Fav'ed: {{activity.fav_counter}} </p>
-    <p> {{activity.activity_date | date:"MM/dd/yyyy"}} </p>
-    <p> <span ng-show="activity.at_home"> Stay at Home </span>       <span ng-hide="activity.at_home"> Go Out </span>
-    |   <span ng-show="activity.be_active"> Let's Be Active </span>  <span ng-hide="activity.be_active"> Take it easy </span>
-    |   <span ng-show="activity.under_two"> Under 2 y.o. </span>     <span ng-hide="activity.under_two"> Over 2 y.o. </span>
+    <p ng-model="vm.activity.favorite"> Favorite: {{vm.activity.favorite}} </p>
+    <p> Fav'ed: {{vm.activity.fav_counter}} </p>
+    <p> {{vm.activity.activity_date | date:"MM/dd/yyyy"}} </p>
+    <p> <span ng-show="vm.activity.at_home"> Stay at Home </span>       <span ng-hide="vm.activity.at_home"> Go Out </span>
+    |   <span ng-show="vm.activity.be_active"> Let's Be Active </span>  <span ng-hide="vm.activity.be_active"> Take it easy </span>
+    |   <span ng-show="vm.activity.under_two"> Under 2 y.o. </span>     <span ng-hide="vm.activity.under_two"> Over 2 y.o. </span>
     </p>
-    <p> Summary: {{activity.summary}} </p>
-
-    <div class="comment-window">
-      <p>Comments-</p>
-      <div ng-repeat="comment in activity.comments">
-        <p>  {{comment.author.name}} <small>({{comment.author.email}})</small>: {{comment.body}} </p>
+    <div class="activity-summary"> {{vm.activity.summary}} </div>
+    <hr>
+    <div class="comment-container">
+      <p>Comments:</p>
+      <div class="comment-window box-shadow--2dp">
+        <div ng-repeat="comment in activity.comments">
+          <p>  {{comment.author.name}}: {{comment.body}} </p>
+        <hr>
+        </div>
       </div>
-      <h5>Add Comment</h5>
-      <input type="text" ng-model="comment.body" placeholder="Comment here...">
-      <button ng-click="vm.addComment(activity, comment)">Post</button>
+      <span ng-hide="vm.isLoggedIn()">
+        <p id="login-warn"> Please <a ui-sref-active="active" ng-hide="vm.isLoggedIn()"ui-sref="login"> log in </a> to comment! </p>
+      </span>
+      <span ng-show="vm.isLoggedIn()">
+        <input class="comment-input" type="text" ng-model="comment.body" placeholder="Add comment here...">
+        <button ng-click="vm.addComment(activity, comment)">Post</button>
+      </span>
     </div>
-
   </div>
+

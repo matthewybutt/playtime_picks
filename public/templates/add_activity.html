@@ -1,5 +1,5 @@
 <!-- Create Activity Form -->
-<div class="activity-form">
+<div class="activity-form box-shadow--4dp">
   <form  ng-submit="vm.createActivity()">
     <h4>Add an Activity</h4>
 
@@ -22,9 +22,13 @@
         <td> <input type="radio" ng-model="vm.activityData.under_two" ng-value="false"> Over 2 y.o.</td>
       </tr>
     </table>
+    <input type="text" ng-model="vm.activityData.author" ng-value="vm.currentUser._id">
     <br>
     <span> Summary: </span>
     <textarea class="summary-field "type="text" ng-model="vm.activityData.summary"></textarea>
-    <button ng-click="submit">Submit</button>
+    <span ng-hide="vm.isLoggedIn()">
+      <p id="login-warn"> Please <a ui-sref-active="active" ng-hide="vm.isLoggedIn()" ui-sref="login"> log in </a> to add activity! </p>
+    </span>
+    <button ng-show="vm.isLoggedIn()" ng-click="submit">Submit</button>
   </form>
 </div>

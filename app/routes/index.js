@@ -28,5 +28,10 @@ router.delete('/activities/:id', usersController.tokenVerify, activitiesControll
 router.post('/activities/:id/comments', usersController.tokenVerify, activitiesController.createComment);
 router.put('/activities/:id/favCount',  usersController.tokenVerify, activitiesController.favCount);
 
+router.get('/me', usersController.tokenVerify, function(req, res){
+  res.send(req.decoded);
+});
+
+
 
 module.exports = router;

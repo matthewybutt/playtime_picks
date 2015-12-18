@@ -42,8 +42,9 @@
   function authService($http, $q, authToken, userDataService, $state) {
 
     // create auth factory object
-    var authFactory = {},
-        currentUser;
+    var authFactory = {};
+
+    authFactory.currentUser = {}; //EZRA delete this and replace with currentUser;
 
     // log a user in
     authFactory.login = function(email, password) {
@@ -80,14 +81,14 @@
         return false;
     };
 
-    authFactory.currentUser = function () {
-      return currentUser;
-    };
+    // authFactory.currentUser = function () { //EZRA uncomment to go back to original
+    //   return currentUser;
+    // };
 
     // get the logged in user
     authFactory.getUser = function(id) {
       if (authToken.getToken())
-        return $http.get('/api/users/' + id, { cache: true });
+        authFactory.currentUser = $http.get('/api/users/' + id, { cache: true }); //EZRA return to replace authFactory.currentUser =
       else
         return $q.reject({ message: 'User has no token.' });
     };

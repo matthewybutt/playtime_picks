@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <title>Playtime Picks</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="/assets/css/main.css">
-
+  <link rel="stylesheet" href="/assets/css/animate.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
 </head>
 <body ng-controller="MainController as vm">
 
@@ -24,13 +25,12 @@
         <a ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()">Log Out</a> </h5>
       </div>
 
-      <button ui-sref-active="active" ui-sref="home"> Home </button>
+<!--       <button ui-sref-active="active" ui-sref="home"> Home </button>
+ -->
       <button ui-sref-active="active" ui-sref="activities"> Activities </button>
       <button ui-sref-active="active" ui-sref="addActivity"> Add Activity </button>
       <button ui-sref-active="active" ui-sref="about"> About </button>
-      <button ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()"> Log Out </button>
     </div>
-
    <ui-view></ui-view>
   </div>
 

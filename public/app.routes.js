@@ -17,13 +17,13 @@
         controllerAs: "vm"
       })
       .state("activities", {
-        url: "/activities/",
+        url: "/activities",
         templateUrl: "/templates/activities.html",
         controller: "ActivitiesController",
         controllerAs: "vm"
       })
       .state("activity", {
-        url: "/activities/{id}",
+        url: "/activities/id",
         templateUrl: "/templates/activity.html",
         controller: "ActivitiesController",
         controllerAs: "vm"

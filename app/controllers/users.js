@@ -80,7 +80,7 @@ var destroy = function(req, res) {
 var userAuth = function(req, res, next){
   User.findOne({
       email: req.body.email
-    }).select('email password name').exec(function(err, user) {
+    }).select('email password name _id').exec(function(err, user) {
 
       if (err) throw err;
 
@@ -104,7 +104,9 @@ var userAuth = function(req, res, next){
           // if user is found and password is right
           // create a token
           var token = jwt.sign({
-            email: user.email
+            email: user.email,
+            name: user.name,
+            _id: user._id
           }, superSecret, {
             expiresInMinutes: 43200 // expires in 30 days
           });
