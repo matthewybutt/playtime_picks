@@ -221,9 +221,34 @@ a {
 
 .about-container h1 {
   font-family: 'Butterfly Kids', cursive;
+  text-align: center;
 }
 
 .about-container hr {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid black;
+}
+
+/*Home Container*/
+.home-container {
+  border: 1px solid black;
+  margin: 10px auto;
+  padding: 10px;
+  max-width: 600px;
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.home-container h1 {
+  font-family: 'Butterfly Kids', cursive;
+  text-align: center;
+  margin-top: 10px
+}
+
+.home-container hr {
   margin-top: 5px;
   margin-bottom: 10px;
   border: 0;
@@ -255,6 +280,7 @@ a {
 .header-font {
   font-family: 'Butterfly Kids', cursive;
   font-size: 40px;
+  text-align: center;
 }
 
 .box-shadow--2dp {

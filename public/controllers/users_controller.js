@@ -14,12 +14,12 @@
       vm.createUser = createUser;
 
       function createUser(){
-        $log.log("click");
+        // $log.log("click");
         userDataService.createUser(vm.userData)
           .success(function(data) {
             vm.userData = {};
           });
-        $log.log(vm.userData);
+        // $log.log(vm.userData);
         $state.go('home')
       };
 

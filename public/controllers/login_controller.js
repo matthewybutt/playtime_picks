@@ -17,10 +17,10 @@
       vm.loginData;
 
       function loginUser(){
-        $log.log("click");
+        // $log.log("click");
         authService.login(vm.loginData.email, vm.loginData.password)
           .then(function(res){
-            $log.log(res.data);
+            // $log.log(res.data);
             userDataService.user = res.data.user;
             $state.go('activities');
           });

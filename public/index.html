@@ -27,12 +27,11 @@
         <a ui-sref-active="active" ng-show="vm.isLoggedIn()"ng-click="vm.logout()">Log Out</a> </h4>
       </div>
 
-<!--       <button ui-sref-active="active" ui-sref="home"> Home </button>
- -->
+      <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="home"> Home </button>
       <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="activities"> Activities </button>
       <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="addActivity"> Add Activity </button>
-      <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="about"> About </button>
-    </div>
+<!--       <button class="nav-btn box-shadow--2dp" ui-sref-active="active" ui-sref="about"> About </button>
+ -->    </div>
    <ui-view></ui-view>
   </div>
 
