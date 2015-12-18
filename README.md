@@ -2,13 +2,13 @@
 <img src="https://i.imgur.com/JyzS50v.png" width="350px"/>
 </p>
 
-<a href=""> <h1 align=center>Playtime Picks</h1> </a>
+<a href="https://safe-river-5701.herokuapp.com"> <h1 align=center>Playtime Picks</h1> </a>
 
 Playtime Picks is an app for parents, grandparents, anyone to quickly find an activity to do with their kid!  Easily find fun activities for how you're feeling by using the filter.  If you have any great activities to share with others feel free to sign-up and add it to the list.  You can also leave comments on other activities on this site.  We hope we can help you pick the right playtime activity just for you and your kid!
 
 Click on or copy & paste this link to reach our site:
 
-- [https://herokuname.herokuapp.com/](https://herokuname.herokuapp.com/)
+- [https://safe-river-5701.herokuapp.com/](https://safe-river-5701.herokuapp.com/)
 
 ___
 
